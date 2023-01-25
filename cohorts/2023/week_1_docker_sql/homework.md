@@ -10,12 +10,14 @@ Run the command to get information on Docker
 
 ```docker --help```
 
-Now run the command to get help on the "docker build" command
+Now run the command to get help on the "docker build" command:
+
+ANSWER: ```docker build --help```
 
 Which tag has the following text? - *Write the image ID to the file* 
 
 - `--imageid string`
-- `--iidfile string`
+- `--iidfile string` -> this
 - `--idimage string`
 - `--idfile string`
 
@@ -25,10 +27,14 @@ Which tag has the following text? - *Write the image ID to the file*
 Run docker with the python:3.9 image in an interactive mode and the entrypoint of bash.
 Now check the python modules that are installed ( use pip list). 
 How many python packages/modules are installed?
+ANSWER: 
+```docker run -it --entrypoint bash python:3.9
+root@b5db7d2fae03:/# pip list
+```
 
 - 1
 - 6
-- 3
+- 3 -> this
 - 7
 
 # Prepare Postgres
@@ -54,9 +60,19 @@ Tip: started and finished on 2019-01-15.
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
 - 20689
-- 20530
+- 20530 -> this
 - 17630
 - 21090
+
+ANSWER: 
+```sql
+SELECT 
+	COUNT(1) as "trip_count"
+FROM 
+	public.green_taxi_trips t
+WHERE CAST(lpep_pickup_datetime AS DATE)='2019-01-15' AND
+	CAST(lpep_dropoff_datetime AS DATE)='2019-01-15';
+```
 
 ## Question 4. Largest trip for each day
 
@@ -65,8 +81,20 @@ Use the pick up time for your calculations.
 
 - 2019-01-18
 - 2019-01-28
-- 2019-01-15
+- 2019-01-15 -> this
 - 2019-01-10
+
+ANSWER:
+```sql
+SELECT 
+	CAST(lpep_pickup_datetime AS DATE) as "day", 
+	MAX(trip_distance)
+FROM 
+	public.green_taxi_trips t
+GROUP BY
+	1
+ORDER BY 2 DESC;
+```
 
 ## Question 5. The number of passengers
 
@@ -74,9 +102,20 @@ In 2019-01-01 how many trips had 2 and 3 passengers?
  
 - 2: 1282 ; 3: 266
 - 2: 1532 ; 3: 126
-- 2: 1282 ; 3: 254
+- 2: 1282 ; 3: 254 -> this
 - 2: 1282 ; 3: 274
-
+ANSWER:
+```sql
+SELECT 
+	CAST(lpep_pickup_datetime AS DATE) as "day", 
+	COUNT(1) as "trip_count"
+FROM 
+	public.green_taxi_trips t
+WHERE 
+	CAST(lpep_pickup_datetime AS DATE) = '2019-01-01' AND
+	passenger_count='3' -- and run it for '2'
+GROUP BY 1;
+```
 
 ## Question 6. Largest tip
 
@@ -88,7 +127,22 @@ Note: it's not a typo, it's `tip` , not `trip`
 - Central Park
 - Jamaica
 - South Ozone Park
-- Long Island City/Queens Plaza
+- Long Island City/Queens Plaza -> this
+ANSWER:
+```sql
+SELECT  lpu."Zone" AS "pickup_loc",
+		ldo."Zone" AS "dropoff_loc",
+		MAX(tip_amount)
+FROM 
+	public.green_taxi_trips t 
+	JOIN zones lpu 
+		ON t."PULocationID" = lpu."LocationID"
+	JOIN zones ldo
+		ON t."DOLocationID" = ldo."LocationID"
+WHERE lpu."Zone" = 'Astoria'
+GROUP BY 1, 2
+ORDER BY 3 DESC;
+```
 
 
 ## Submitting the solutions
