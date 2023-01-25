@@ -27,8 +27,11 @@ Which tag has the following text? - *Write the image ID to the file*
 Run docker with the python:3.9 image in an interactive mode and the entrypoint of bash.
 Now check the python modules that are installed ( use pip list). 
 How many python packages/modules are installed?
+
 ANSWER: 
-```docker run -it --entrypoint bash python:3.9
+
+```
+docker run -it --entrypoint bash python:3.9
 root@b5db7d2fae03:/# pip list
 ```
 
@@ -104,6 +107,7 @@ In 2019-01-01 how many trips had 2 and 3 passengers?
 - 2: 1532 ; 3: 126
 - 2: 1282 ; 3: 254 -> this
 - 2: 1282 ; 3: 274
+
 ANSWER:
 ```sql
 SELECT 
@@ -128,6 +132,7 @@ Note: it's not a typo, it's `tip` , not `trip`
 - Jamaica
 - South Ozone Park
 - Long Island City/Queens Plaza -> this
+
 ANSWER:
 ```sql
 SELECT  lpu."Zone" AS "pickup_loc",
