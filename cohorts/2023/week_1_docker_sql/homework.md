@@ -155,7 +155,7 @@ ORDER BY 3 DESC;
 * Form for submitting: [form](https://forms.gle/EjphSkR1b3nsdojv7)
 * You can submit your homework multiple times. In this case, only the last submission will be used. 
 
-Deadline: 26 January (Thursday), 22:00 CET
+Deadline: 30 January (Monday), 22:00 CET
 
 
 ## Solution
