@@ -8,7 +8,7 @@ prefect profile ls
 prefect config set PREFECT_API_URL="http://127.0.0.1:4200/api"
 prefect deployment run etl-parent-flow/docker-flow
 
-prefect deployment build path/to/flow.py:flow_name --name deployment_name --tag dev -sb github/dev -a
+prefect deployment build week_2_workflow_orchestration/flows/homework/etl_web_to_gcs.py:etl_parent_flow --name "Green Nov 2020 v2" --tag main -sb github/main -a
 
 
 docker image build --no-cache -t aydanrende/prefect:zoom .

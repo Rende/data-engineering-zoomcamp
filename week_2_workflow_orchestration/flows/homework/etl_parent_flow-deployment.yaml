@@ -1,12 +1,13 @@
 ###
 ### A complete description of a Prefect Deployment for flow 'etl-parent-flow'
 ###
-name: Question 3 ETL
+name: Green Nov 2020 v2
 description: null
-version: ee5bfad852c420b4206c00ba38f8f4dd
+version: da91571e93e783474ea1f7babf08dc0b
 # The work queue that will handle this deployment's runs
 work_queue_name: default
-tags: []
+tags:
+- main
 parameters: {}
 schedule: null
 infra_overrides: {}
@@ -26,9 +27,17 @@ infrastructure:
 ###
 flow_name: etl-parent-flow
 manifest_path: null
-storage: null
-path: /home/aydan.rende/data-engineering-zoomcamp/week_2_workflow_orchestration/flows/homework
-entrypoint: etl_gcs_to_bq.py:etl_parent_flow
+storage:
+  repository: https://github.com/Rende/data-engineering-zoomcamp/
+  reference: null
+  access_token: null
+  _block_document_id: 0709decc-a66d-4730-9112-7b9e7e509e3d
+  _block_document_name: main
+  _is_anonymous: false
+  block_type_slug: github
+  _block_type_slug: github
+path: ''
+entrypoint: week_2_workflow_orchestration/flows/homework/etl_web_to_gcs.py:etl_parent_flow
 parameter_openapi_schema:
   title: Parameters
   type: object
@@ -36,20 +45,19 @@ parameter_openapi_schema:
     months:
       title: months
       default:
-      - 2
-      - 3
+      - 11
       position: 0
       type: array
       items:
         type: integer
     year:
       title: year
-      default: 2019
+      default: 2020
       position: 1
       type: integer
     color:
       title: color
-      default: yellow
+      default: green
       position: 2
       type: string
   required: null
