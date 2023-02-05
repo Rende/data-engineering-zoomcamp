@@ -1,0 +1,14 @@
+prefect orion start
+prefect deployment build ./parameterized_flow.py:etl_parent_flow -n "Parameterized ETL"
+prefect deployment apply etl_parent_flow-deployment.yaml
+prefect agent start -q 'default'
+prefect deployment build flows/02_gcp/parameterized_flow.py:etl_parent_flow -n "ETL 2" --cron "0 0 * * *" -a 
+
+prefect profile ls
+prefect config set PREFECT_API_URL="http://127.0.0.1:4200/api"
+prefect deployment run etl-parent-flow/docker-flow
+
+
+
+docker image build --no-cache -t aydanrende/prefect:zoom .
+docker iamge push aydanrende/prefect:zoom
