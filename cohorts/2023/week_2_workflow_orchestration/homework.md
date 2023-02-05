@@ -9,7 +9,7 @@ Using the `etl_web_to_gcs.py` flow that loads taxi data into GCS as a guide, cre
 
 How many rows does that dataset have?
 
-* 447,770
+* 447,770 -> this
 * 766,792
 * 299,234
 * 822,132
@@ -21,7 +21,7 @@ Cron is a common scheduling specification for workflows.
 
 Using the flow in `etl_web_to_gcs.py`, create a deployment to run on the first of every month at 5am UTC. What’s the cron schedule for that?
 
-- `0 5 1 * *`
+- `0 5 1 * *` -> `0 5 1 * *` this
 - `0 0 5 1 *`
 - `5 * 1 0 *`
 - `* * 5 1 0`
@@ -41,7 +41,7 @@ Create a deployment for this flow to run in a local subprocess with local flow c
 
 Make sure you have the parquet data files for Yellow taxi data for Feb. 2019 and March 2019 loaded in GCS. Run your deployment to append this data to your BiqQuery table. How many rows did your flow code process?
 
-- 14,851,920
+- 14,851,920 -> this
 - 12,282,990
 - 27,235,753
 - 11,338,483
@@ -100,7 +100,7 @@ Prefect Secret blocks provide secure, encrypted storage in the database and obfu
 
 - 5
 - 6
-- 8
+- 8 ->this
 - 10
 
 
