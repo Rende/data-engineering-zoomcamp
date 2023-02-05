@@ -60,7 +60,7 @@ How many rows were processed by the script?
 
 - 88,019
 - 192,297
-- 88,605
+- 88,605 -> this
 - 190,225
 
 
@@ -91,7 +91,7 @@ How many rows were processed by the script?
 - `125,268`
 - `377,922`
 - `728,390`
-- `514,392`
+- `514,392` -> this 514392
 
 
 ## Question 6. Secrets
